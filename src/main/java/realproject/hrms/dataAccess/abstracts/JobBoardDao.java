@@ -9,9 +9,11 @@ import java.util.List;
 
 public interface JobBoardDao extends JpaRepository<JobBoard,Integer> {
 
-    @Query("Select new realproject.hrms.entities.dtos.JobBoardDto (b.jobId, c.companyName, p.jobname, b.numberOfPerson, b.createdDate, b.lastApplyDate) From Employer c Inner Join c.jobBoards b Inner Join b.jobPosition p Order By b.createdDate")
+    @Query("Select new realproject.hrms.entities.dtos.JobBoardDto (b.jobId, c.companyName, p.jobname, b.numberOfPerson, b.createdDate, b.lastApplyDate) From Employer c Inner Join c.jobBoards b Inner Join b.jobPosition p Where b.isActive = true Order By b.createdDate")
     List<JobBoardDto> getJobBoardWithEmployerDetails();
 
     @Query("Select new realproject.hrms.entities.dtos.JobBoardDto (b.jobId, c.companyName, p.jobname, b.numberOfPerson, b.createdDate, b.lastApplyDate) From Employer c Inner Join c.jobBoards b Inner Join b.jobPosition p Where c.companyName =:companyName and b.isActive=true Order By b.createdDate")
     List<JobBoardDto> getJobBoardWithEmployerDetails(String companyName);
+
+
 }

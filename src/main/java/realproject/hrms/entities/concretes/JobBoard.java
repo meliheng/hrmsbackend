@@ -45,8 +45,18 @@ public class JobBoard {
     @Column(name = "last_apply_date")
     private LocalDate lastApplyDate;
 
-    @Column(name = "is_active", nullable = false, columnDefinition = "boolean default true")
+    @Column(name = "is_active", nullable = false, columnDefinition = "boolean default false")
     private Boolean isActive;
+
+    @Column(name = "work_type",nullable = false)
+    @NotBlank
+    @NotNull
+    private String workType;
+
+    @Column(name = "work_period",nullable = false)
+    @NotBlank
+    @NotNull
+    private String workPeriod;
 
     @ManyToOne()
     @JoinColumn(name = "user_id")
