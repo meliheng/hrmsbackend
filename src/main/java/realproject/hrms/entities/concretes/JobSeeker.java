@@ -43,9 +43,6 @@ public class JobSeeker extends User{
 	@NotBlank
 	private String nationalityId;
 
-	@Column(name = "profile_image_url")
-	private String profileImageUrl;
-
 	@OneToMany(mappedBy = "jobSeeker",fetch = FetchType.LAZY)
 	private List<EducationInformation> educationInformations;
 
@@ -63,5 +60,8 @@ public class JobSeeker extends User{
 
 	@OneToOne(mappedBy = "jobSeeker",fetch = FetchType.LAZY)
 	private CoverLetter coverLetter;
+
+	@OneToOne(mappedBy = "jobSeeker",fetch = FetchType.LAZY)
+	private ProfileImage profileImage;
 
 }

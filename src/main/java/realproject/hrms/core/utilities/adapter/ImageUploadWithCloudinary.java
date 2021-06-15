@@ -1,5 +1,6 @@
 package realproject.hrms.core.utilities.adapter;
 
+import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.stereotype.Service;
 import realproject.hrms.cloudinary.CloudinaryManager;
@@ -13,13 +14,9 @@ import java.util.Map;
 public class ImageUploadWithCloudinary implements ImageUploadService{
 
     @Override
-    public Result uploadImage(String imageUrl){
-        try {
-            Map uploadResult = CloudinaryManager.cloudinary().uploader().upload(imageUrl,ObjectUtils.asMap("resource_type","image","public_id","161w"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return new SuccessResult("profil resmi kaydedildi");
+    public String uploadImage(String imageUrl) throws IOException {
+        Map uploadResult = CloudinaryManager.cloudinary().uploader().upload(imageUrl,ObjectUtils.emptyMap());
+        return uploadResult.get("url").toString();
     }
 
     @Override

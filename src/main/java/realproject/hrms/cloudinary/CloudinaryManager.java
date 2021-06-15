@@ -1,7 +1,6 @@
 package realproject.hrms.cloudinary;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.SingletonManager;
+import com.cloudinary.*;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +13,6 @@ public class CloudinaryManager {
                 "api_key", "type here",
                 "api_secret", "type here"));
 
-        SingletonManager manager = new SingletonManager();
-        manager.setCloudinary(cloudinary);
-        manager.init();
         return cloudinary;
     }
 

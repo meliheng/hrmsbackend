@@ -59,7 +59,6 @@ public class JobSeekerManager implements JobSeekerService{
 			return new ErrorResult("email onayı yapılmadı!");
 		}
 		this.seekerDao.save(jobSeeker);
-		this.imageUploadService.uploadImage(jobSeeker.getProfileImageUrl());
 		return new SuccessResult("Yeni kayıt eklendi");
 	}
 
